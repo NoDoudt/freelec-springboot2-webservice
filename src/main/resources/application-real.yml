@@ -1,12 +1,6 @@
 spring:
   profiles:
     include: oauth,real-db
-  datasource:
-    hikari:
-      jdbc-url:
-      username:
-      password:
-      driver-class-name:
   jpa:
     properties:
       hibernate:
