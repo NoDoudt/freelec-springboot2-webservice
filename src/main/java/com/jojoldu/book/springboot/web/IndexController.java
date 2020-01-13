@@ -23,7 +23,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
-        log.info(String.format("IndexController.index: $s", user));
+        log.debug(String.format("IndexController.index: %s", user));
 
         model.addAttribute("posts", postsService.findAllDesc());
 
