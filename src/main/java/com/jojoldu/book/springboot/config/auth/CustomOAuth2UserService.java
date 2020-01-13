@@ -35,6 +35,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String registrationId = userRequest
                 .getClientRegistration()
                 .getRegistrationId();
+        log.debug(String.format("CustomOAuth2UserService.loadUser의 registrationId: $s", registrationId));
 
         /*
         로그인 진행 시 키가되는 필드값 (Primary Key)
@@ -45,6 +46,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .getProviderDetails()
                 .getUserInfoEndpoint()
                 .getUserNameAttributeName();
+        log.debug(String.format("CustomOAuth2UserService.loadUser의 userNameAttributeName: $s", userNameAttributeName));
 
         /*
         OAuth2UserService를 통해 가져온 OAuth2User의 attribute를 담을 클래스
@@ -64,10 +66,14 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     private User saveOrUpdate(OAuthAttributes attributes) {
+        log.debug(String.format("CustomOAuth2UserService.saveOrUpdate의 attributes: $s", attributes));
+
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
-        log.debug(user.toString());
+
+        log.debug(String.format("CustomOAuth2UserService.saveOrUpdate의 user: $s", user.toString()));
+
         return userRepository.save(user);
     }
 
