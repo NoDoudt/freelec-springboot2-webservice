@@ -1,12 +1,23 @@
-spring:
-  profiles:
-    include: oauth,real
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-  session:
-    store-type: jdbc
+jpa:
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+session:
+  store-type: jdbc
 logging:
   level:
     root: INFO
+---
+spring.profiles: dev
+spring:
+  profiles:
+    include:
+      - oauth
+      - dev
+---
+spring.profiles: real
+spring:
+  profiles:
+    include:
+      - oauth
+      - real
