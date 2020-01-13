@@ -16,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        log.debug(String.format("SecurityConfig.configure: %s", http));
+        log.info(String.format("SecurityConfig.configure: %s", http));
 
         http
                 .csrf().disable()
