@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
@@ -22,8 +23,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
-//        log.info(String.format("IndexController.index: $s", user));
-        System.out.println(String.format("IndexController.index: $s", user));
+        log.info(String.format("IndexController.index: $s", user));
 
         model.addAttribute("posts", postsService.findAllDesc());
 
