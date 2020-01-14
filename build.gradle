@@ -22,7 +22,7 @@ repositories {
 }
 
 group 'com.jojoldu.book'
-version '1.0-SNAPSHOT'
+version '1.0-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
 configurations {
