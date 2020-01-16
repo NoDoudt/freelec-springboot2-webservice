@@ -28,8 +28,8 @@ function find_idle_port() {
 
   if [ ${IDLE_PROFILE} == nondisruptive-deploy-real1 ]
   then
-    echo "8081"
-  else
     echo "8082"
+  else
+    echo "8081"
   fi
 }
